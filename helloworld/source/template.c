@@ -50,7 +50,7 @@ int main(int argc, char **argv) {
 	printf("\x1b[2;0H");
 	
 
-	printf("Hello World!");
+	printf("Hello World! Jacob Belmore Wrote This");
 
 	while(1) {
 
