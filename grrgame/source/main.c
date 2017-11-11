@@ -16,6 +16,7 @@
 #include "images/squirtle.h"
 #include "images/bg.h"
 #include "images/leaf.h"
+#include "images/font.h"
 #include "sounds/pallet.h"
 #include "sounds/leafwhoosh.h"
 
@@ -39,19 +40,23 @@ int main(int argc, char **argv) {
 	GRRLIB_texImg *tex_squirtle = GRRLIB_LoadTexture(squirtle);
 	GRRLIB_texImg *tex_bg = GRRLIB_LoadTexture(bg);
 	GRRLIB_texImg *tex_leaf = GRRLIB_LoadTexture(leaf);
+	GRRLIB_texImg *tex_font = GRRLIB_LoadTexture(font);
 	//set constants
 	int projectileSpeed = 15;
 	int speed = 5;
+	int score = 0;
+	
 	int bulbaXPos = 0;
 	int bulbaYPos = 380;
 	int leafXPos = 0;
 	int leafYPos = 0;
-	//int bulbadx = 0;
+	int squirtleXPos = 40;
 	//int bulbady = 0;
 	double bulbaScale = 0.2;
 	double leafScale = 0.1;
 	double leafRot = 270;
-	
+	char *statusText = "Squirtles Killed:";
+	char *scoreText = "";
     // Loop forever
     while(1) {
 		GRRLIB_DrawImg(0, 0, tex_bg, 0, 1, 1, 0xFFFFFFFF);
@@ -75,10 +80,10 @@ int main(int argc, char **argv) {
 			bulbaXPos = bulbaXPos - speed;
 			
 		}
-		if(wd->btns_h & WPAD_BUTTON_DOWN && (bulbaYPos > 380)){
+		if(wd->btns_h & WPAD_BUTTON_DOWN && (bulbaYPos < 400)){
 			bulbaYPos = bulbaYPos + speed;
 			
-		}if(wd->btns_h & WPAD_BUTTON_UP && (bulbaYPos < 460)){
+		}if(wd->btns_h & WPAD_BUTTON_UP && (bulbaYPos > 320)){
 			bulbaYPos = bulbaYPos - speed;
 			
 		}
@@ -86,12 +91,20 @@ int main(int argc, char **argv) {
 		{
 			GRRLIB_DrawImg(leafXPos, leafYPos, tex_leaf, leafRot, leafScale, leafScale, 0xFFFFFFFF);
 			leafXPos = leafXPos - projectileSpeed;
+			if (leafXPos > squirtleXPos && leafXPos < squirtleXPos + 50){
+				squirtleXPos = -100;
+				score = score + 1;
+			}
 			leafRot = (leafRot + 10) ;
 			if (leafRot == 360) leafRot = 0;
 		}
-		
-		GRRLIB_DrawImg(40, 500, tex_squirtle, 0, 0.2, 0.2, 0xFFFFFFFF);
-		
+		if (squirtleXPos < 400)
+		{
+			squirtleXPos = squirtleXPos + 3;
+
+		}
+		GRRLIB_Printf(20, 30, tex_font, 0xFFFFFF80, 2, "Hello WOrld"	);
+		GRRLIB_DrawImg(squirtleXPos, 320, tex_squirtle, 0, -0.2, 0.2, 0xFFFFFFFF);
 		GRRLIB_DrawImg(bulbaXPos, bulbaYPos, tex_bulb, 0, bulbaScale, bulbaScale, 0xFFFFFFFF);
 		
 		

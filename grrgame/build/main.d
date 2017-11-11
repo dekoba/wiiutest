@@ -74,6 +74,7 @@ main.o: c:/wiiutest/grrgame/source/main.c \
  c:/wiiutest/grrgame/source/images/squirtle.h \
  c:/wiiutest/grrgame/source/images/bg.h \
  c:/wiiutest/grrgame/source/images/leaf.h \
+ c:/wiiutest/grrgame/source/images/font.h \
  c:/wiiutest/grrgame/source/sounds/pallet.h \
  c:/wiiutest/grrgame/source/sounds/leafwhoosh.h
 
@@ -228,6 +229,8 @@ c:/wiiutest/grrgame/source/images/squirtle.h:
 c:/wiiutest/grrgame/source/images/bg.h:
 
 c:/wiiutest/grrgame/source/images/leaf.h:
+
+c:/wiiutest/grrgame/source/images/font.h:
 
 c:/wiiutest/grrgame/source/sounds/pallet.h:
 
