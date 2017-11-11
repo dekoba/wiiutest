@@ -71,6 +71,7 @@ main.o: c:/wiiutest/grrgame/source/main.c \
  c:/devkitPro/libogc/include/mad.h c:/devkitPro/libogc/include/fat.h \
  c:/devkitPro/libogc/include/libfatversion.h \
  c:/wiiutest/grrgame/source/images/bulba.h \
+ c:/wiiutest/grrgame/source/images/squirtle.h \
  c:/wiiutest/grrgame/source/images/bg.h \
  c:/wiiutest/grrgame/source/images/leaf.h \
  c:/wiiutest/grrgame/source/sounds/pallet.h \
@@ -221,6 +222,8 @@ c:/devkitPro/libogc/include/fat.h:
 c:/devkitPro/libogc/include/libfatversion.h:
 
 c:/wiiutest/grrgame/source/images/bulba.h:
+
+c:/wiiutest/grrgame/source/images/squirtle.h:
 
 c:/wiiutest/grrgame/source/images/bg.h:
 

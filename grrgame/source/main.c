@@ -13,6 +13,7 @@
 #include <mp3player.h>
 #include <fat.h>
 #include "images/bulba.h"
+#include "images/squirtle.h"
 #include "images/bg.h"
 #include "images/leaf.h"
 #include "sounds/pallet.h"
@@ -35,13 +36,14 @@ int main(int argc, char **argv) {
 	MP3Player_PlayBuffer(pallet, pallet_size, NULL);
 	//Load in things
 	GRRLIB_texImg *tex_bulb = GRRLIB_LoadTexture(bulba);
+	GRRLIB_texImg *tex_squirtle = GRRLIB_LoadTexture(squirtle);
 	GRRLIB_texImg *tex_bg = GRRLIB_LoadTexture(bg);
 	GRRLIB_texImg *tex_leaf = GRRLIB_LoadTexture(leaf);
 	//set constants
 	int projectileSpeed = 15;
 	int speed = 5;
 	int bulbaXPos = 0;
-	int bulbaYPos = 0;
+	int bulbaYPos = 380;
 	int leafXPos = 0;
 	int leafYPos = 0;
 	//int bulbadx = 0;
@@ -65,18 +67,18 @@ int main(int argc, char **argv) {
 			leafXPos = bulbaXPos;
 		    leafYPos = bulbaYPos;
 			MP3Player_PlayBuffer(leafwhoosh, leafwhoosh_size, NULL);
-		if(wd->btns_h & WPAD_BUTTON_RIGHT){
+		if(wd->btns_h & WPAD_BUTTON_RIGHT && (bulbaXPos < 600)){
 			bulbaXPos = bulbaXPos + speed;
 			
 		}
-		if(wd->btns_h & WPAD_BUTTON_LEFT){
+		if(wd->btns_h & WPAD_BUTTON_LEFT && (bulbaXPos > 0)){
 			bulbaXPos = bulbaXPos - speed;
 			
 		}
-		if(wd->btns_h & WPAD_BUTTON_DOWN){
+		if(wd->btns_h & WPAD_BUTTON_DOWN && (bulbaYPos > 380)){
 			bulbaYPos = bulbaYPos + speed;
 			
-		}if(wd->btns_h & WPAD_BUTTON_UP){
+		}if(wd->btns_h & WPAD_BUTTON_UP && (bulbaYPos < 460)){
 			bulbaYPos = bulbaYPos - speed;
 			
 		}
@@ -88,7 +90,7 @@ int main(int argc, char **argv) {
 			if (leafRot == 360) leafRot = 0;
 		}
 		
-		
+		GRRLIB_DrawImg(40, 500, tex_squirtle, 0, 0.2, 0.2, 0xFFFFFFFF);
 		
 		GRRLIB_DrawImg(bulbaXPos, bulbaYPos, tex_bulb, 0, bulbaScale, bulbaScale, 0xFFFFFFFF);
 		
