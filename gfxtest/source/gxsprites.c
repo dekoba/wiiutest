@@ -12,6 +12,7 @@
 #include <gccore.h>
 #include <wiiuse/wpad.h>
 #include <ogc/tpl.h>
+#include <grrlib.h>
 
 #include "textures_tpl.h"
 #include "textures.h"
@@ -51,6 +52,8 @@ int main( int argc, char **argv ){
 	GXColor background = {0, 0, 100, 0xff};
 
 	int i;
+	int evolvedYet = 0;
+	int presses = 0;
 	int speedx = 0;
 	int speedy = 0;
 	int movespeed = 512;
@@ -143,11 +146,15 @@ int main( int argc, char **argv ){
 	}
 
 	while(1) {
-
+		if ( evolvedYet == 0 && presses > 10 ){
+			TPL_GetTexture(&spriteTPL,ivysaur,&texObj);
+			GX_LoadTexObj(&texObj, GX_TEXMAP0);
+			evolvedYet = 1;
+		}
 		WPAD_ScanPads();
 
 		if (WPAD_ButtonsDown(0) & WPAD_BUTTON_HOME) exit(0);
-		if(WPAD_ButtonsDown(0)& WPAD_BUTTON_LEFT) {	speedx = -movespeed;speedy=0;}
+		if(WPAD_ButtonsDown(0)& WPAD_BUTTON_LEFT) {	speedx = -movespeed;speedy=0;presses++;}
 		if(WPAD_ButtonsDown(0)& WPAD_BUTTON_RIGHT) {speedx = movespeed;speedy=0;}
 		if(WPAD_ButtonsDown(0) & WPAD_BUTTON_UP) 	{speedy = -movespeed;speedx=0;}
 		if(WPAD_ButtonsDown(0) & WPAD_BUTTON_DOWN) {speedy = movespeed;speedx=0;}
@@ -167,7 +174,7 @@ int main( int argc, char **argv ){
 		guMtxTransApply (GXmodelView2D, GXmodelView2D, 0.0F, 0.0F, -5.0F);
 		GX_LoadPosMtxImm(GXmodelView2D,GX_PNMTX0);
 
-		
+
 
 		
 		//check for collision with the screen boundaries

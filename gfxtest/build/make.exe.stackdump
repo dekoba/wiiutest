@@ -9,4 +9,4 @@ Frame     Function  Args
 0062E5D8  6085CDB6  (00000000, 00000003, 0062E610, 6D632F74)
 0062E5F8  6080E236  (0062E610, 6D632F74, 0062E638, 02080042)
 0062EA28  60882726  (69472F73, 6D632F74, 632F3A64, 6F72502F)
-  75877 [main] make 3032 handle_exceptions: Error while dumping state (probably corrupted stack)
+  61811 [main] make 1044 handle_exceptions: Error while dumping state (probably corrupted stack)
