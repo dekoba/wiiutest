@@ -73,7 +73,8 @@ main.o: c:/wiiutest/grrgame/source/main.c \
  c:/wiiutest/grrgame/source/images/bulba.h \
  c:/wiiutest/grrgame/source/images/bg.h \
  c:/wiiutest/grrgame/source/images/leaf.h \
- c:/wiiutest/grrgame/source/sounds/pallet.h
+ c:/wiiutest/grrgame/source/sounds/pallet.h \
+ c:/wiiutest/grrgame/source/sounds/leafwhoosh.h
 
 c:/devkitPro/libogc/include/grrlib.h:
 
@@ -226,3 +227,5 @@ c:/wiiutest/grrgame/source/images/bg.h:
 c:/wiiutest/grrgame/source/images/leaf.h:
 
 c:/wiiutest/grrgame/source/sounds/pallet.h:
+
+c:/wiiutest/grrgame/source/sounds/leafwhoosh.h:

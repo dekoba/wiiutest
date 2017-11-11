@@ -16,7 +16,7 @@
 #include "images/bg.h"
 #include "images/leaf.h"
 #include "sounds/pallet.h"
-
+#include "sounds/leafwhoosh.h"
 
 
 
@@ -64,7 +64,7 @@ int main(int argc, char **argv) {
 		if (WPAD_ButtonsDown(0) & WPAD_BUTTON_B)
 			leafXPos = bulbaXPos;
 		    leafYPos = bulbaYPos;
-			MP3Player_PlayBuffer(pallet, pallet_size, NULL);
+			MP3Player_PlayBuffer(leafwhoosh, leafwhoosh_size, NULL);
 		if(wd->btns_h & WPAD_BUTTON_RIGHT){
 			bulbaXPos = bulbaXPos + speed;
 			
@@ -84,7 +84,8 @@ int main(int argc, char **argv) {
 		{
 			GRRLIB_DrawImg(leafXPos, leafYPos, tex_leaf, leafRot, leafScale, leafScale, 0xFFFFFFFF);
 			leafXPos = leafXPos - projectileSpeed;
-			leafRot = (leafRot + 10) % 360;
+			leafRot = (leafRot + 10) ;
+			if (leafRot == 360) leafRot = 0;
 		}
 		
 		
